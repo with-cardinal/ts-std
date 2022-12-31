@@ -18,7 +18,7 @@ tasks:
       - npm:install
       - build
     cmds:
-      - node --test
+      - node --enable-source-maps --test
 
   lint:
     deps:
