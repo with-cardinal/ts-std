@@ -1,4 +1,6 @@
+.git
 .github
 .gitignore
-.git
 .task
+renovate.json
+Taskfile.yaml
