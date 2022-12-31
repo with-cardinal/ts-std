@@ -28,6 +28,7 @@
     "noUnusedParameters": true,
     "importsNotUsedAsValues": "error",
     "checkJs": true,
+    "sourceMap": true,
     "outDir": "dist/",
     "declaration": true
   },
