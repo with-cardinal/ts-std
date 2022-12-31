@@ -1,5 +1,8 @@
+// Injected automatically. Do not edit.
+// 
+// Install required packages:
+// npm install -E -D typescript @types/node
 {
-  "$note": "Injected automatically. Do not edit.",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Node",
   "compilerOptions": {
