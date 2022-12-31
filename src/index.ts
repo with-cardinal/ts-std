@@ -1,3 +1,3 @@
-export { Status } from "./status.js";
-export * from "./valid-json.js";
-export * from "./result.js";
+export { Status } from "./status";
+export * from "./valid-json";
+export * from "./result";
