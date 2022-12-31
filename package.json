@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "description": "Standard TypeScript library for Cardinal",
   "type": "module",
-  "main": "dist/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "test": "task test"
   },
