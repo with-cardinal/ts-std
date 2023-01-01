@@ -1,15 +1,16 @@
-// import { test } from "node:test";
-// import assert from "node:assert";
-// import { bool } from "./bool.js";
-// import { ShapeError } from "./validation-error.js";
+import { test } from "node:test";
+import assert from "node:assert";
+import { bool } from "./bool.js";
+import { ValidationError } from "./validation-error.js";
+import { unwrap } from "../result.js";
 
-// const testType = bool;
+const testType = bool;
 
-// test("valid coerce", () => {
-//   const res = testType.coerce(true);
-//   assert.strictEqual(res, true);
-// });
+test("valid coerce", () => {
+  const res = unwrap(testType(true));
+  assert.strictEqual(res, true);
+});
 
-// test("invalid coerce", () => {
-//   assert.throws(() => testType.coerce(12), ShapeError);
-// });
+test("invalid coerce", () => {
+  assert.throws(() => unwrap(testType(12)), ValidationError);
+});

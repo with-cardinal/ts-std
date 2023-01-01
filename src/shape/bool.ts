@@ -1,15 +1,13 @@
-// import { Shape, genericSafelyCoerce } from "./base.js";
-// import { error } from "./validation-error.js";
+import type { Shape } from "./base.js";
+import { ValidationError, message } from "./validation-error.js";
+import { Result, Ok, Err } from "../result.js";
 
-// function coerce(val: unknown): boolean {
-//   if (typeof val === "boolean") {
-//     return val;
-//   }
+export const bool: Shape<boolean> = (
+  val: unknown
+): Result<boolean, ValidationError> => {
+  if (typeof val === "boolean") {
+    return Ok(val);
+  }
 
-//   throw error("must be a boolean");
-// }
-
-// export const bool: Shape<boolean> = {
-//   coerce,
-//   safelyCoerce: genericSafelyCoerce(coerce),
-// };
+  return Err(new ValidationError([message("must be a boolean")]));
+};
