@@ -5,7 +5,7 @@ import { bool } from "./bool.js";
 // import { i32, ui32 } from "./int.js";
 // import { obj } from "./obj.js";
 // import { str } from "./str.js";
-// import { date } from "./date.js";
+import { date } from "./date.js";
 // import { optional } from "./optional.js";
 // import { notBlank } from "./not-blank.js";
 
@@ -19,7 +19,7 @@ export {
   // ui32,
   // obj,
   // str,
-  // date,
+  date,
   // optional,
   // notBlank,
 };
