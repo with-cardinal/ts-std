@@ -7,6 +7,18 @@
   "exports": {
     ".": {
       "default": "./dist/index.js"
+    },
+    "./json": {
+      "default": "./dist/json/index.js"
+    },
+    "./result": {
+      "default": "./dist/result/index.js"
+    },
+    "./run": {
+      "default": "./dist/run/index.js"
+    },
+    "./http": {
+      "default": "./dist/run/index.js"
     }
   },
   "scripts": {
