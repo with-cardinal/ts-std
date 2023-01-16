@@ -18,7 +18,7 @@ tasks:
       - npm:install
       - build
     cmds:
-      - node --enable-source-maps --test | npx tap
+      - node --enable-source-maps --test | npx tap --md
 
   lint:
     deps:
