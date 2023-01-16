@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { Ok, Err, isErr, isOk, unwrap } from "./result.js";
+import { Ok, Err, isErr, isOk, unwrap } from "./index.js";
 
 describe("isOk", () => {
   it("returns true for Ok value", () => {
