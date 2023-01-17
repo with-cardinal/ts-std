@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18, 19]
+        node-version: [19]
         
     steps:
       - uses: actions/checkout@v3
@@ -29,3 +29,6 @@ jobs:
       - run: task lint
       - run: task build
       - run: task test
+      - run: |
+          touch test-results.md
+          cat test-results.md 2>/dev/null >> $GITHUB_STEP_SUMMARY

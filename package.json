@@ -5,8 +5,20 @@
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "default": "./dist/index.js"
+    "./either": {
+      "default": "./dist/either/index.js"
+    },
+    "./http": {
+      "default": "./dist/run/index.js"
+    },
+    "./json": {
+      "default": "./dist/json/index.js"
+    },
+    "./result": {
+      "default": "./dist/result/index.js"
+    },
+    "./run": {
+      "default": "./dist/run/index.js"
     }
   },
   "scripts": {
@@ -26,13 +38,15 @@
   },
   "homepage": "https://github.com/with-cardinal/ts-std#readme",
   "devDependencies": {
+    "@type-challenges/utils": "0.1.1",
     "@types/node": "18.11.18",
-    "@typescript-eslint/eslint-plugin": "5.47.1",
-    "@typescript-eslint/parser": "5.47.1",
-    "eslint": "8.31.0",
-    "eslint-config-prettier": "8.5.0",
+    "@typescript-eslint/eslint-plugin": "5.48.2",
+    "@typescript-eslint/parser": "5.48.2",
+    "@withcardinal/tap": "0.0.4",
+    "eslint": "8.32.0",
+    "eslint-config-prettier": "8.6.0",
     "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.8.1",
+    "prettier": "2.8.3",
     "typescript": "4.9.4"
   },
   "volta": {
