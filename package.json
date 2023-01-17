@@ -32,6 +32,10 @@
     "./shape": {
       "default": "./dist/shape/index.js",
       "types": "./dist/shape/index.d.ts"
+    },
+    "./validation": {
+      "default": "./dist/validation/index.js",
+      "types": "./dist/validation/index.d.ts"
     }
   },
   "scripts": {
