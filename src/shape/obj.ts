@@ -1,39 +1,34 @@
-// import { Shape, ObjShape, Infer, genericSafelyCoerce } from "./base.js";
-// import { error, ShapeError } from "./validation-error.js";
+import { Err, Ok, isOk, Result } from "../result/index.js";
+import type { ObjShape, Shape, Infer } from "./base.js";
+import {
+  appendMessages,
+  message,
+  ValidationMessages,
+} from "./validation-messages.js";
 
-// function coerceFn<T extends ObjShape>(objShape: T) {
-//   return (val: unknown): Infer<T> => {
-//     if (val === null || typeof val !== "object" || Array.isArray(val)) {
-//       throw error("must be an object");
-//     }
+export function obj<S extends ObjShape>(shape: S): Shape<Infer<S>> {
+  return (val: unknown): Result<Infer<S>, ValidationMessages> => {
+    if (val === null || typeof val !== "object" || Array.isArray(val)) {
+      return Err(message("must be an object"));
+    }
 
-//     const valObj = val as { [key: string]: unknown };
+    const valObj = val as { [key: string]: unknown };
+    const out = Object.create({});
+    const msgs: ValidationMessages = [];
 
-//     const out = Object.create(null);
-//     const errs = new ShapeError();
+    for (const [objKey, objValue] of Object.entries(shape)) {
+      const result = objValue(valObj[objKey]);
+      if (isOk(result)) {
+        out[objKey] = result.value;
+      } else {
+        appendMessages(msgs, objKey, result.err);
+      }
+    }
 
-//     for (const [objKey, objValue] of Object.entries(objShape)) {
-//       const result = objValue.safelyCoerce(valObj[objKey]);
+    if (msgs.length > 0) {
+      return Err(msgs);
+    }
 
-//       if (result.success) {
-//         out[objKey] = result.value;
-//       } else {
-//         errs.append(objKey, result.errors);
-//       }
-//     }
-
-//     if (errs.hasErrors()) {
-//       throw errs;
-//     }
-
-//     return out;
-//   };
-// }
-
-// export function obj<T extends ObjShape>(objShape: T): Shape<Infer<T>> {
-//   const coerce = coerceFn(objShape);
-//   return {
-//     coerce,
-//     safelyCoerce: genericSafelyCoerce(coerce),
-//   };
-// }
+    return Ok(out as Infer<S>);
+  };
+}
