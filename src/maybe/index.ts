@@ -1,6 +1,6 @@
 export type Maybe<T> = T | undefined | null;
 
-function present<T>(m: Maybe<T>): m is T {
+export function isPresent<T>(m: Maybe<T>): m is T {
   if (m === undefined || m === null) {
     return false;
   }
@@ -9,7 +9,7 @@ function present<T>(m: Maybe<T>): m is T {
 }
 
 export function maybeUndefined<T>(m: Maybe<T>): T | undefined {
-  if (present(m)) {
+  if (isPresent(m)) {
     return m;
   }
 
@@ -17,7 +17,7 @@ export function maybeUndefined<T>(m: Maybe<T>): T | undefined {
 }
 
 export function maybeNull<T>(m: Maybe<T>): T | null {
-  if (present(m)) {
+  if (isPresent(m)) {
     return m;
   }
 

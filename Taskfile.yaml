@@ -44,3 +44,8 @@ tasks:
       - "**/*.{ts,js,tsx,jsx}"
     generates:
       - dist/**/*
+
+  clean:
+    desc: Remove all build files
+    cmds:
+      - rm -rf dist
