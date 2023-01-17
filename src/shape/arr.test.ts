@@ -7,15 +7,15 @@ import { message } from "./validation-messages.js";
 
 const testArr = arr(str);
 
-test("valid coerce", () => {
+test("valid", () => {
   assert.deepStrictEqual(testArr(["foo", "bar"]), Ok(["foo", "bar"]));
 });
 
-test("invalid coerce: not array", () => {
+test("invalid: not array", () => {
   assert.deepStrictEqual(testArr("foo"), Err(message("must be an array")));
 });
 
-test("invalid coerce: wrong type", () => {
+test("invalid : wrong type", () => {
   assert.deepStrictEqual(
     testArr(["foo", ["bar"]]),
     Err([{ msg: "must be a string", path: [1] }])

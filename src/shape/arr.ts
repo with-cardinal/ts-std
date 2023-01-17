@@ -18,7 +18,7 @@ export function arr<T>(shape: Shape<T>): Shape<T[]> {
     for (let i = 0; i < val.length; i++) {
       const result = shape(val[i]);
       if (isErr(result)) {
-        appendMessages(msgs, i, result.error);
+        appendMessages(msgs, i, result.err);
       } else {
         out[i] = result.value;
       }
