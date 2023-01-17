@@ -8,13 +8,13 @@ describe("isOk", () => {
   });
 
   it("returns false for Err", () => {
-    assert.strictEqual(isOk(Err(new Error("OH NO"))), false);
+    assert.strictEqual(isOk(Err("OH NO")), false);
   });
 });
 
 describe("isErr", () => {
   it("returns true for Err value", () => {
-    assert.strictEqual(isErr(Err(new Error("OH NO"))), true);
+    assert.strictEqual(isErr(Err("OH NO")), true);
   });
 
   it("returns false for Ok value", () => {
@@ -28,7 +28,6 @@ describe("unwrap", () => {
   });
 
   it("throws for Err", () => {
-    const err = new Error("Something broke");
-    assert.throws(() => unwrap(Err(err)));
+    assert.throws(() => unwrap(Err("Something broke")));
   });
 });
