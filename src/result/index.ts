@@ -13,23 +13,23 @@ export class ResultError<E> extends Error {
   }
 }
 
-export function Ok<T = never, E = never>(value: T): Result<T, E> {
+export function Ok<T, E>(value: T): Result<T, E> {
   return { value };
 }
 
-export function Err<T = never, E = never>(error: E): Result<T, E> {
+export function Err<T, E>(error: E): Result<T, E> {
   return { error };
 }
 
-export function isOk<T = never, E = never>(r: Result<T, E>): r is Ok<T> {
+export function isOk<T, E>(r: Result<T, E>): r is Ok<T> {
   return "value" in r;
 }
 
-export function isErr<T = never, E = never>(r: Result<T, E>): r is Err<E> {
+export function isErr<T, E>(r: Result<T, E>): r is Err<E> {
   return "error" in r;
 }
 
-export function unwrap<T = never, E = never>(r: Result<T, E>): T {
+export function unwrap<T, E>(r: Result<T, E>): T {
   if (isErr(r)) {
     if (r.error instanceof Error) {
       throw r.error;

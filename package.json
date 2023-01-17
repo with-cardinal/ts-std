@@ -6,19 +6,28 @@
   "types": "./dist/index.d.ts",
   "exports": {
     "./either": {
-      "default": "./dist/either/index.js"
+      "default": "./dist/either/index.js",
+      "types": "./dist/either/index.d.ts"
     },
     "./http": {
-      "default": "./dist/run/index.js"
+      "default": "./dist/run/index.js",
+      "types": "./dist/run/index.d.ts"
     },
     "./json": {
-      "default": "./dist/json/index.js"
+      "default": "./dist/json/index.js",
+      "types": "./dist/json/index.d.ts"
+    },
+    "./maybe": {
+      "default": "./dist/maybe/index.js",
+      "types": "./dist/maybe/index.d.ts"
     },
     "./result": {
-      "default": "./dist/result/index.js"
+      "default": "./dist/result/index.js",
+      "types": "./dist/result/index.d.ts"
     },
     "./run": {
-      "default": "./dist/run/index.js"
+      "default": "./dist/run/index.js",
+      "types": "./dist/run/index.d.ts"
     }
   },
   "scripts": {
