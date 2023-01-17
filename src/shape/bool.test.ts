@@ -1,16 +1,15 @@
-// import { test } from "node:test";
-// import assert from "node:assert";
-// import { bool } from "./bool.js";
-// import { ValidationError } from "./validation-messages.js";
-// import { unwrap } from "../result.js";
+import { test } from "node:test";
+import assert from "node:assert";
+import { bool } from "./bool.js";
+import { message } from "./validation-messages.js";
+import { Ok, Err } from "../result/index.js";
 
-// const testType = bool;
+const testShape = bool;
 
-// test("valid coerce", () => {
-//   const res = unwrap(testType(true));
-//   assert.strictEqual(res, true);
-// });
+test("valid", () => {
+  assert.deepStrictEqual(testShape(true), Ok(true));
+});
 
-// test("invalid coerce", () => {
-//   assert.throws(() => unwrap(testType(12)), ValidationError);
-// });
+test("invalid", () => {
+  assert.deepStrictEqual(testShape(12), Err(message("must be a boolean")));
+});
