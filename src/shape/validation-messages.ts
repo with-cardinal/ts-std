@@ -2,25 +2,6 @@ export type ValidationPath = (string | number)[];
 export type ValidationMessage = { path: ValidationPath; msg: string };
 export type ValidationMessages = ValidationMessage[];
 
-export class ValidationError extends Error {
-  details: ValidationMessage[];
-
-  constructor(details: ValidationMessage[] = []) {
-    super("Validation error");
-    this.details = details;
-
-    Object.setPrototypeOf(this, ValidationError.prototype);
-  }
-
-  getMessage(path: ValidationPath) {
-    return getMessage(this.details, path);
-  }
-
-  getMessages(path: ValidationPath) {
-    return getMessages(this.details, path);
-  }
-}
-
 /**
  * addMessage adds an additional message to a set of messages
  * @param msgs - the ValidationMessages to add to
@@ -90,10 +71,10 @@ export function getMessages(
 }
 
 /**
- * Creates a ValidationMessage object with an error at the empty path
+ * Creates a ValidationMessages object with an error at the empty path
  *
  * @param msg - the error message to add
  */
-export function message(msg: string): ValidationMessage {
-  return { path: [], msg };
+export function message(msg: string): ValidationMessages {
+  return [{ path: [], msg }];
 }

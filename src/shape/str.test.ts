@@ -1,16 +1,15 @@
 import { test } from "node:test";
 import assert from "node:assert";
 import { str } from "./str.js";
-import { ValidationError } from "./validation-error.js";
-import { unwrap } from "../result.js";
+import { Ok, Err } from "../result/index.js";
+import { message } from "./validation-messages.js";
 
-const testType = str;
+const testShape = str;
 
-test("valid coerce", () => {
-  const res = unwrap(testType("foobar"));
-  assert.strictEqual(res, "foobar");
+test("valid", () => {
+  assert.deepStrictEqual(testShape("foobar"), Ok("foobar"));
 });
 
-test("invalid deserialize", () => {
-  assert.throws(() => unwrap(testType(12)), ValidationError);
+test("invalid", () => {
+  assert.deepStrictEqual(testShape(12), Err(message("must be a string")));
 });

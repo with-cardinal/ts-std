@@ -1,16 +1,15 @@
-import { Err, isErr, Ok } from "../result.js";
+import { Err, isErr, Ok } from "../result/index.js";
 import type { Shape } from "./base.js";
 import {
   appendMessages,
-  ValidationError,
   ValidationMessages,
   message,
-} from "./validation-error.js";
+} from "./validation-messages.js";
 
 export function arr<T>(shape: Shape<T>): Shape<T[]> {
   return (val: unknown) => {
     if (!Array.isArray(val)) {
-      return Err(new ValidationError([message("must be an array")]));
+      return Err(message("must be an array"));
     }
 
     const out: T[] = [];
@@ -19,14 +18,14 @@ export function arr<T>(shape: Shape<T>): Shape<T[]> {
     for (let i = 0; i < val.length; i++) {
       const result = shape(val[i]);
       if (isErr(result)) {
-        appendMessages(msgs, i, result.error.details);
+        appendMessages(msgs, i, result.error);
       } else {
         out[i] = result.value;
       }
     }
 
     if (msgs.length > 0) {
-      return Err(new ValidationError(msgs));
+      return Err(msgs);
     }
 
     return Ok(out);

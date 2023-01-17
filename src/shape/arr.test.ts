@@ -2,20 +2,22 @@ import { test } from "node:test";
 import assert from "node:assert";
 import { arr } from "./arr.js";
 import { str } from "./str.js";
-import { ValidationError } from "./validation-error.js";
-import { unwrap } from "../result.js";
+import { Ok, Err } from "../result/index.js";
+import { message } from "./validation-messages.js";
 
 const testArr = arr(str);
 
 test("valid coerce", () => {
-  const result = unwrap(testArr(["foo", "bar"]));
-  assert.deepStrictEqual(result, ["foo", "bar"]);
+  assert.deepStrictEqual(testArr(["foo", "bar"]), Ok(["foo", "bar"]));
 });
 
 test("invalid coerce: not array", () => {
-  assert.throws(() => unwrap(testArr("foo")), ValidationError);
+  assert.deepStrictEqual(testArr("foo"), Err(message("must be an array")));
 });
 
 test("invalid coerce: wrong type", () => {
-  assert.throws(() => unwrap(testArr(["foo", ["bar"]])), ValidationError);
+  assert.deepStrictEqual(
+    testArr(["foo", ["bar"]]),
+    Err([{ msg: "must be a string", path: [1] }])
+  );
 });

@@ -1,5 +1,5 @@
-import type { ValidationError } from "./validation-error.js";
-import type { Result } from "../result.js";
+import type { ValidationMessages } from "./validation-messages.js";
+import type { Result } from "../result/index.js";
 
 /**
  * Shape lets you serialize and deserialize data to plain objects
@@ -12,7 +12,7 @@ export interface Shape<T = unknown> {
    * @param val - unknown value to be coerced
    * @returns typed shaped value or Errs
    */
-  (val: unknown): Result<T, ValidationError>;
+  (val: unknown): Result<T, ValidationMessages>;
 }
 
 export type ObjShape = { [key: string]: Shape };

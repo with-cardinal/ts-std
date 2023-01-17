@@ -5,7 +5,7 @@ import {
   addMessage,
   getMessages,
   getMessage,
-} from "./validation-error.js";
+} from "./validation-messages.js";
 
 test("addMessage", () => {
   const msgs: ValidationMessages = [];
