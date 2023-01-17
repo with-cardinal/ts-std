@@ -1,5 +1,9 @@
 export type { Shape, ObjShape, Infer } from "./base.js";
-export { ValidationMessages } from "./validation-messages.js";
+export {
+  ValidationMessages,
+  getMessage,
+  getMessages,
+} from "./validation-messages.js";
 export { arr } from "./arr.js";
 export { bool } from "./bool.js";
 export { i32, ui32 } from "./int.js";
