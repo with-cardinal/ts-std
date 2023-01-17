@@ -28,6 +28,10 @@
     "./run": {
       "default": "./dist/run/index.js",
       "types": "./dist/run/index.d.ts"
+    },
+    "./shape": {
+      "default": "./dist/shape/index.js",
+      "types": "./dist/shape/index.d.ts"
     }
   },
   "scripts": {
