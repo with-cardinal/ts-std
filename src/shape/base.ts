@@ -19,7 +19,7 @@ export interface Shape<T = unknown> {
   (val: unknown): Result<T, ValidationMessages>;
 }
 
-export function validate<T>(s: Shape<T>, v: Validation<T>[]): Shape<T> {
+export function validate<T>(s: Shape<T>, ...v: Validation<T>[]): Shape<T> {
   return (val: unknown) => {
     const res = s(val);
 
