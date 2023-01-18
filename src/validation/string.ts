@@ -23,3 +23,34 @@ export function stringMax(length: number): Validation<string> {
     return [];
   };
 }
+
+export function stringLength(length: number): Validation<string> {
+  return (val: string) => {
+    if (val.length !== length) {
+      return [`must be ${length} character${length === 1 ? "" : "s"}`];
+    }
+
+    return [];
+  };
+}
+
+export function stringMatch(
+  regex: RegExp,
+  message: string
+): Validation<string> {
+  return (val: string) => {
+    if (!val.match(regex)) {
+      return [message];
+    }
+
+    return [];
+  };
+}
+
+export const stringNotBlank: Validation<string> = (val: string) => {
+  if (val.trim() === "") {
+    return ["must not be blank"];
+  }
+
+  return [];
+};
