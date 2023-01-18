@@ -1,12 +1,14 @@
 import { Err, isErr, Ok } from "../result/index.js";
-import type { Shape } from "./base.js";
+import type { Validation } from "../validation/index.js";
+import { Shape, validate } from "./base.js";
 import {
   appendMessages,
   ValidationMessages,
   message,
+  appendValidations,
 } from "./validation-messages.js";
 
-export function arr<T>(shape: Shape<T>): Shape<T[]> {
+export function arr<T>(shape: Shape<T>, ...v: Validation<T[]>[]): Shape<T[]> {
   return (val: unknown) => {
     if (!Array.isArray(val)) {
       return Err(message("must be an array"));
@@ -22,6 +24,11 @@ export function arr<T>(shape: Shape<T>): Shape<T[]> {
       } else {
         out[i] = result.value;
       }
+    }
+
+    // only validate if schema is correct
+    if (msgs.length === 0) {
+      appendValidations(msgs, validate(out, v));
     }
 
     if (msgs.length > 0) {

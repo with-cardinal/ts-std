@@ -1,5 +1,6 @@
 import type { ValidationMessages } from "./validation-messages.js";
 import type { Result } from "../result/index.js";
+import type { Validation } from "../validation/index.js";
 
 /**
  * Shape lets you serialize and deserialize data to plain objects
@@ -12,7 +13,17 @@ export interface Shape<T = unknown> {
    * @param val - unknown value to be coerced
    * @returns typed shaped value or Errs
    */
-  (val: unknown): Result<T, ValidationMessages>;
+  (val: unknown, ...v: Validation<T>[]): Result<T, ValidationMessages>;
+}
+
+export function validate<T>(val: T, v: Validation<T>[]): string[] {
+  let out: string[] = [];
+
+  for (const validation of v) {
+    out = out.concat(validation(val));
+  }
+
+  return out;
 }
 
 export type ObjShape = { [key: string]: Shape };
