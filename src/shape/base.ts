@@ -13,7 +13,7 @@ export interface Shape<T = unknown> {
    * @param val - unknown value to be coerced
    * @returns typed shaped value or Errs
    */
-  (val: unknown, ...v: Validation<T>[]): Result<T, ValidationMessages>;
+  (val: unknown): Result<T, ValidationMessages>;
 }
 
 export function validate<T>(val: T, v: Validation<T>[]): string[] {

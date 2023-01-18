@@ -26,7 +26,6 @@ export function arr<T>(shape: Shape<T>, ...v: Validation<T[]>[]): Shape<T[]> {
       }
     }
 
-    // only validate if schema is correct
     if (msgs.length === 0) {
       appendValidations(msgs, validate(out, v));
     }
