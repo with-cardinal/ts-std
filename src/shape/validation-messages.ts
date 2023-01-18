@@ -34,6 +34,18 @@ export function appendMessages(
   }
 }
 
+export function appendValidations(
+  msgs: ValidationMessages,
+  add: string[]
+): void {
+  msgs.push(
+    ...add.map((msg) => ({
+      path: [],
+      msg,
+    }))
+  );
+}
+
 /**
  * getMessage returns the first error at the given path
  *
