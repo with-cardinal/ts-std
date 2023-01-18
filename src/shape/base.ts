@@ -1,5 +1,8 @@
-import type { ValidationMessages } from "./validation-messages.js";
-import type { Result } from "../result/index.js";
+import {
+  appendValidations,
+  ValidationMessages,
+} from "./validation-messages.js";
+import { Err, isErr, Result } from "../result/index.js";
 import type { Validation } from "../validation/index.js";
 
 /**
@@ -16,14 +19,27 @@ export interface Shape<T = unknown> {
   (val: unknown): Result<T, ValidationMessages>;
 }
 
-export function validate<T>(val: T, v: Validation<T>[]): string[] {
-  let out: string[] = [];
+export function validate<T>(s: Shape<T>, v: Validation<T>[]): Shape<T> {
+  return (val: unknown) => {
+    const res = s(val);
 
-  for (const validation of v) {
-    out = out.concat(validation(val));
-  }
+    if (isErr(res)) {
+      return res;
+    }
 
-  return out;
+    let vMsgs: string[] = [];
+    for (const validation of v) {
+      vMsgs = vMsgs.concat(validation(res.value));
+    }
+
+    if (vMsgs.length > 0) {
+      const msgs: ValidationMessages = [];
+      appendValidations(msgs, vMsgs);
+      return Err(msgs);
+    }
+
+    return res;
+  };
 }
 
 export type ObjShape = { [key: string]: Shape };
