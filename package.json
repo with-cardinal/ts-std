@@ -6,36 +6,36 @@
   "types": "./dist/index.d.ts",
   "exports": {
     "./either": {
-      "default": "./dist/either/index.js",
-      "types": "./dist/either/index.d.ts"
+      "types": "./dist/either/index.d.ts",
+      "default": "./dist/either/index.js"
     },
     "./http": {
-      "default": "./dist/run/index.js",
-      "types": "./dist/run/index.d.ts"
+      "types": "./dist/run/index.d.ts",
+      "default": "./dist/run/index.js"
     },
     "./json": {
-      "default": "./dist/json/index.js",
-      "types": "./dist/json/index.d.ts"
+      "types": "./dist/json/index.d.ts",
+      "default": "./dist/json/index.js"
     },
     "./maybe": {
-      "default": "./dist/maybe/index.js",
-      "types": "./dist/maybe/index.d.ts"
+      "types": "./dist/maybe/index.d.ts",
+      "default": "./dist/maybe/index.js"
     },
     "./result": {
-      "default": "./dist/result/index.js",
-      "types": "./dist/result/index.d.ts"
+      "types": "./dist/result/index.d.ts",
+      "default": "./dist/result/index.js"
     },
     "./run": {
-      "default": "./dist/run/index.js",
-      "types": "./dist/run/index.d.ts"
+      "types": "./dist/run/index.d.ts",
+      "default": "./dist/run/index.js"
     },
     "./shape": {
-      "default": "./dist/shape/index.js",
-      "types": "./dist/shape/index.d.ts"
+      "types": "./dist/shape/index.d.ts",
+      "default": "./dist/shape/index.js"
     },
     "./validation": {
-      "default": "./dist/validation/index.js",
-      "types": "./dist/validation/index.d.ts"
+      "types": "./dist/validation/index.d.ts",
+      "default": "./dist/validation/index.js"
     }
   },
   "scripts": {
