@@ -1,4 +1,4 @@
-export type { Shape, ObjShape, Infer } from "./base.js";
+export type { Shape, ObjShape, Infer, validate } from "./base.js";
 export {
   ValidationMessages,
   getMessage,
