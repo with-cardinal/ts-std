@@ -9,8 +9,12 @@
       "default": "./dist/either/index.js"
     },
     "./http": {
-      "types": "./dist/run/index.d.ts",
-      "default": "./dist/run/index.js"
+      "types": "./dist/http/index.d.ts",
+      "default": "./dist/http/index.js"
+    },
+    "./id": {
+      "types": "./dist/id/index.d.ts",
+      "default": "./dist/id/index.js"
     },
     "./json": {
       "types": "./dist/json/index.d.ts",
