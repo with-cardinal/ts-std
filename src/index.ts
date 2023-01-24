@@ -4,6 +4,5 @@ export * from "./id";
 export * from "./json";
 export * from "./maybe";
 export * from "./result";
-export * from "./run";
 export * from "./shape";
 export * from "./validation";
