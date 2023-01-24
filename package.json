@@ -3,44 +3,8 @@
   "version": "0.0.0",
   "description": "Standard TypeScript library for Cardinal",
   "type": "module",
-  "exports": {
-    "./either": {
-      "types": "./dist/either/index.d.ts",
-      "default": "./dist/either/index.js"
-    },
-    "./http": {
-      "types": "./dist/http/index.d.ts",
-      "default": "./dist/http/index.js"
-    },
-    "./id": {
-      "types": "./dist/id/index.d.ts",
-      "default": "./dist/id/index.js"
-    },
-    "./json": {
-      "types": "./dist/json/index.d.ts",
-      "default": "./dist/json/index.js"
-    },
-    "./maybe": {
-      "types": "./dist/maybe/index.d.ts",
-      "default": "./dist/maybe/index.js"
-    },
-    "./result": {
-      "types": "./dist/result/index.d.ts",
-      "default": "./dist/result/index.js"
-    },
-    "./run": {
-      "types": "./dist/run/index.d.ts",
-      "default": "./dist/run/index.js"
-    },
-    "./shape": {
-      "types": "./dist/shape/index.d.ts",
-      "default": "./dist/shape/index.js"
-    },
-    "./validation": {
-      "types": "./dist/validation/index.d.ts",
-      "default": "./dist/validation/index.js"
-    }
-  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "task test"
   },
